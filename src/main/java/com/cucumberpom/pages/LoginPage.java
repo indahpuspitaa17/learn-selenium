@@ -8,29 +8,30 @@ import org.openqa.selenium.support.PageFactory;
 import com.cucumberpom.base.BaseTest;
 
 public class LoginPage extends BaseTest {
-	@FindBy(name = "email")
-	WebElement email;
 
-	@FindBy(name = "password")
-	WebElement password;
+  @FindBy(name = "email")
+  WebElement emailInputField;
 
-	@FindBy(xpath = "//div/button[@type='submit']")
-	WebElement submitButton;
+  @FindBy(name = "password")
+  WebElement passwordInputField;
 
-	public LoginPage() {
-		PageFactory.initElements(driver, this);
+  @FindBy(xpath = "//div/button[@type='submit']")
+  WebElement masukButtonV1;
 
-	}
+  public LoginPage() {
+    PageFactory.initElements(driver, this);
 
-	public String getTitle() {
-		return driver.getTitle();
-	}
+  }
 
-	public void doLogin() {
-		email.sendKeys(prop.getProperty("email"));
-		password.sendKeys(prop.getProperty("password"));
+  public String getTitle() {
+    return driver.getTitle();
+  }
 
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("arguments[0].click();", submitButton);
-	}
+  public void doLogin() {
+    emailInputField.sendKeys(prop.getProperty("email"));
+    passwordInputField.sendKeys(prop.getProperty("password"));
+
+    JavascriptExecutor js = (JavascriptExecutor) driver;
+    js.executeScript("arguments[0].click();", masukButtonV1);
+  }
 }
